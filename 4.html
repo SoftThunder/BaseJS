@@ -33,7 +33,63 @@
     <script>
         "use strict";
 
-  // Здесь пишем решение, данный комментарий необходимо стереть.
+        let result;
+        const num1 = +prompt('введите первое число');
+        const num2 = +prompt('введите второе число');
+        console.log(sum(num1, num2)); // вывод результата сложения
+        console.log(difference(num1, num2)); // вывод результата вычитания
+        console.log(multiplication(num1, num2)); // вывод результата умножения
+        console.log(division(num1, num2)); // вывод результата деления
+
+        /**
+         * функция выполняет сложение двух переменных
+         * @param {number} int1 
+         * @param {number} int2 
+         * @returns результат сложения
+         */
+        function sum(int1, int2) {
+            result = int1 + int2;
+            return result;
+        }
+        /**
+         * функция выполняет вычитание двух переменных
+         * @param {number} int1 
+         * @param {number} int2 
+         * @returns результат вычитания
+         */
+        function difference(int1, int2) {
+            if (int1 > int2) {              // исключает операцию вычитания из меньшего большего
+                result = int1 - int2;
+            }
+            else {
+                result = int2 - int1;
+            }
+
+
+            return result;
+        }
+
+        /**
+        * функция выполняет умножения двух переменных
+        * @param {number} int1 
+        * @param {number} int2 
+        * @returns результат умножения
+        */
+        function multiplication(int1, int2) {
+            let result = int1 * int2;
+            return result;
+        }
+        /**
+         * функция выполняет деление двух переменных
+         * @param {number} int1 
+         * @param {number} int2 
+         * @returns результат сложения
+         */
+        function division(int1, int2) {
+            let result = int1 / int2;
+            return result;
+        }
+
     </script>
 </body>
 
