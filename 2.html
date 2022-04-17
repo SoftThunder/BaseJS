@@ -71,9 +71,8 @@
         alert(`имя пользователя: ${user5.author}\n  текст: ${user5.text}\n  Дата изменения профиля: ${user5.date}`);
 
         function AttachedPostES5(author, text, date, highlighted) {
-            PostES5.call(this, author);
-            PostES5.call(this, text);
-            PostES5.call(this, date);
+            PostES5.call(this, author, text, date);
+
             this.highlighted = highlighted;
         }
         AttachedPostES5.prototype = Object.create(PostES5.prototype);
@@ -86,7 +85,7 @@
 
         alert(`имя пользователя: ${attPostES5.author}\n  текст: ${attPostES5.text}\n 
             Дата изменения профиля: ${attPostES5.date}\n пост закреплён: ${attPostES5.highlighted}`);
-            attPostES5.makeTextHighlighted();
+        attPostES5.makeTextHighlighted();
         alert(`имя пользователя: ${attPostES5.author}\n  текст: ${attPostES5.text}\n 
             Дата изменения профиля: ${attPostES5.date}\n пост закреплён: ${attPostES5.highlighted}`);
         // ES 6
