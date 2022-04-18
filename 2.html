@@ -10,19 +10,140 @@
     <!--
 Обязательное задание.
 
-Необходимо создать переменную name, записать в эту переменную свое имя.
-Необходимо также создать переменную admin и присвоить этой переменной значение
-из переменной name.
-Вывести значение переменной admin в консоль.
+Необходимо данное задание выполнить в es5 стиле и в es6 стиле.
+Необходимо создать функцию-конструктор/класс для поста в социальной сети.
+Названия: `PostES5` для es5 стиля и `PostES6` для es6 стиля.
+Пост должен хранить:
+1. Автора поста (имени достаточно).
+2. Текст поста.
+3. Дату и время последнего изменения поста.
+Данные автора поста и текст поста необходимо передавать при создании
+экземпляра объекта.
+Каждому экземпляру объекта должен быть доступен метод `edit`, который будет
+менять текст поста.
+
+---
+
+Необходимо создать функцию-конструктор/класс для закрепленного поста в
+социальной сети.
+Названия: `AttachedPostES5` для es5 стиля и `AttachedPostES6` для es6 стиля.
+Закрепленный пост должен наследоваться от обычного поста.
+Данные автора поста и текст поста необходимо передавать при создании
+экземпляра объекта.
+Закрепленный пост должен иметь свойство `highlighted`, в котором по умолчанию
+будет лежать значение false (это свойство будет обозначать, будет ли наш
+закрепленный пост подсвечен).
+У экземпляров объекта закрепленного поста должен быть метод с названием
+`makeTextHighlighted`, который сделает так, чтобы наш пост стал подсвеченным
+(будет менять свойство `highlighted`).
+
+---
+
+Подсказки:
+1. Задание сложное, советую делать по аналогии с примером на онлайн-занятии.
+2. Обратите внимание что пост хранит "дату и время последнего изменения
+поста", это значит что если пост кто-то изменит (например вызовет какой-то
+метод, который изменит что-то в посте), дата и время последнего изменения
+поста также должна измениться.
+3. Выполняйте все по порядку, не стоит пытаться сделать все сразу, иначе можно
+что-нибудь пропустить.
+4. Если непонятно условие - задайте вопрос.
 -->
     <script>
         "use strict";
-        const name = "Alexey";
-        let admin = name;
-        console.log(admin);
 
+        // ES5
+        // создание функции-конструктора для поста в социальной сети
+        function PostES5(author, text, date) {
+            this.author = author; // Автора поста.
+            this.text = text; // Текст поста.
+            this.date = date; //Дату и время последнего изменения поста.
+        }
+        PostES5.prototype.edit = function () { // метод `edit`, который 
+            this.text = prompt("Введите текст"); //меняет текст поста
+            this.date = new Date();             // меняет дату изменения
+        };
 
-  // Здесь пишем решение, данный комментарий необходимо стереть.
+        const user5 = new PostES5('alexey', 'начальный текст', new Date());
+        // вывод экземпляра класса user5
+        alert(`имя пользователя: ${user5.author}\n  текст: ${user5.text}\n 
+            Дата изменения профиля: ${user5.date}`);
+        user5.edit(); // изменение текста поста
+        // вывод экземпляра класса user5 после изменения текста поста
+        alert(`имя пользователя: ${user5.author}\n  текст: ${user5.text}\n 
+         Дата изменения профиля: ${user5.date}`);
+
+        //  создание функции-конструктора для  закреплённого поста.наследование
+        function AttachedPostES5(author, text, date, highlighted) {
+            PostES5.call(this, author, text, date); //наследование св-в PostES5
+            this.highlighted = highlighted; // собственное свойство
+        }
+        // насследование методов класса PostES5
+        AttachedPostES5.prototype = Object.create(PostES5.prototype);
+        AttachedPostES5.prototype.constructor = AttachedPostES5;
+        // добавление собственного метода makeTextHighlighted -который меняет
+        // свойство highlighted на 'true'
+        AttachedPostES5.prototype.makeTextHighlighted = function () {
+            this.highlighted = true;
+
+        };
+        //создание экземпляра класса AttachedPostES5 -  attPostES5
+        const attPostES5 = new AttachedPostES5('alexey', 'начальный текст',
+            new Date(), false);
+        // вывод   данных экземпляру класса   attPostES5 
+        alert(`имя пользователя: ${attPostES5.author}\n  
+        текст: ${attPostES5.text}\n 
+        Дата изменения профиля: ${attPostES5.date}\n
+        пост закреплён: ${attPostES5.highlighted}`);
+
+        attPostES5.makeTextHighlighted();//выполнение метода makeTextHighlighted
+        // вывод  attPostES5 после выполнения метода makeTextHighlighted
+        alert(`имя пользователя: ${attPostES5.author}\n
+          текст: ${attPostES5.text}\n 
+          Дата изменения профиля: ${attPostES5.date}\n
+          пост закреплён: ${attPostES5.highlighted}`);
+
+        // ES 6
+
+        class PostES6 {
+            constructor(author, text, date) {
+                this.author = author;
+                this.text = text;
+                this.date = date;
+            }
+            edit() {
+                this.text = prompt("Введите текст");
+                this.date = new Date();
+            }
+        }
+        const user6 = new PostES6('alexey', 'начальный текст', new Date());
+        alert(`имя пользователя: ${user6.author}\n текст: ${user6.text}\n 
+            Дата изменения профиля: ${user6.date}`);
+        user6.edit();
+        alert(`имя пользователя: ${user6.author}\n  текст: ${user6.text}\n 
+            Дата изменения профиля: ${user6.date}`);
+        // закреплённый пост наследование
+        class AttachedPostES6 extends PostES6 {
+            constructor(author, text, date, highlighted) {
+                super(author, text, date);
+                this.highlighted = highlighted;
+            }
+            makeTextHighlighted() {
+                this.highlighted = true;
+            }
+        }
+        const attPostES6 = new AttachedPostES6('alexey', 'начальный текст',
+            new Date(), false);
+        alert(`имя пользователя: ${attPostES6.author}\n
+          текст: ${attPostES6.text}\n 
+          Дата изменения профиля: ${attPostES6.date}\n
+          пост закреплён: ${attPostES6.highlighted}`);
+        attPostES6.makeTextHighlighted();
+        alert(`имя пользователя: ${attPostES6.author}\n
+          текст: ${attPostES6.text}\n 
+          Дата изменения профиля: ${attPostES6.date}\n
+          пост закреплён: ${attPostES6.highlighted}`);
+
     </script>
 </body>
 
