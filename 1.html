@@ -22,17 +22,22 @@
     <script>
         "use strict";
         // ES5 стиль
-        function ProductES5(name, price) {
-            this.name = name;
-            this.price = price;
+        // создание функции-конструктор ProductES5
+        function ProductES5(name, price) { 
+            this.name = name; //свойство name
+            this.price = price; //свойство price
         }
+        // создание метода make25Discount
         ProductES5.prototype.make25Discount = function () {
             this.price = this.price * 0.75;
         };
+        // создание экземпляра класса ProductES5 - carProduct5 и передача данных
         const carProduct5 = new ProductES5('ford', 1000);
+        //вывод данных без скидки
         console.log(`машина марки : ${carProduct5.name},
          стоит - ${carProduct5.price} рублей`)
-        carProduct5.make25Discount();
+        carProduct5.make25Discount(); // применение метода make25Discount
+        // вывод данных с примененой скидкой
         console.log(`машина марки : ${carProduct5.name},
          стоит - ${carProduct5.price} рублей`)
 
