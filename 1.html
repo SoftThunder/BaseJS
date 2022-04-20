@@ -36,14 +36,14 @@
         /*
         1. Найти по id, используя getElementById, элемент с id равным "super_link" и
         вывести этот элемент в консоль.
-         */
+            */
         let getSuperLink = document.getElementById("super_link");
         console.log(getSuperLink);
 
         /*
         2. Внутри всех элементов на странице, которые имеют класс "card-link",
         поменяйте текст внутри элемента на "ссылка".
-         */
+            */
         let elementEditText = document.querySelectorAll(".card-link");
         for (let text of elementEditText) {
             text.textContent = "ссылка";
@@ -51,36 +51,36 @@
         /*
         3. Найти все элементы на странице с классом "card-link", которые лежат в
         элементе с классом "card-body" и вывести полученную коллекцию в консоль.
-         */
+            */
         let elementCardBody = document.querySelectorAll(".card-body > .card-link");
         console.log(elementCardBody);
         /*
         4. Найти первый попавшийся элемент на странице у которого есть атрибут
         data-number со значением 50 и вывести его в консоль.
-         */
+            */
         let elementDataNumber50 = document.querySelector('[data-number = "50"]');
         console.log(elementDataNumber50);
         /*
         5. Выведите содержимое тега title в консоль.
-         */
+            */
         console.log(document.querySelector("title").textContent);
 
         /*
         6. Получите элемент с классом "card-title" и выведите его родительский узел
         в консоль.
-         */
+            */
         let elementParentCardTitle = document.querySelector(".card-title").parentNode;
         console.log(elementParentCardTitle);
         /*
         7. Создайте тег `p`, запишите внутри него текст "Привет" и добавьте созданный
         тег в начало элемента, который имеет класс "card".
-         */
+            */
         let createP = document.createElement('p');
         createP.textContent = "Привет";
         document.querySelector(".card").prepend(createP);
         /*
         8. Удалите тег h6 на странице.
-         */
+            */
         document.querySelector("h6").remove();
 
     </script>
