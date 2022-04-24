@@ -43,27 +43,26 @@
     golden, также такой класс должен ставиться всем звездам до нее слева.
     */
 
-    const starEl = document.querySelectorAll('.fas', '.fa-star');
-    console.log(starEl);
-    starEl.forEach(element => {
-      element.addEventListener('mouseover', () => {
-        element.classList.add('golden');
-        element.previousElementSibling.classList.add('golden');
-      });
-
+    const starEl = document.querySelector(".stars_container");
+    starEl.addEventListener('mouseover', event => {
+      if (event.target.classList.contains('fas')) { 
+          event.target.classList.add('golden');
+          event.target.previousElementSibling.classList.add('golden');
+      }
     });
-
     /*
     2. Когда мы уводим курсор мыши от звезды, все поставленные классы из первого
     задания должны быть удалены.
      */
-     starEl.forEach(element => {
-      element.addEventListener('mouseout', () => {
-        element.classList.remove('golden');
-        element.previousElementSibling.classList.remove('golden');
-      });
+    starEl.addEventListener('mouseout', event => {
+      if (event.target.classList.contains('fas')) {
+        event.target.classList.remove('golden');
+        event.target.previousElementSibling.classList.remove('golden');
+        console.log(event.target);
 
+      } else { return; }
     });
+
 
     /*
     3. Когда мы переводим мышь от одной звезды к другой, у нас могут мигать

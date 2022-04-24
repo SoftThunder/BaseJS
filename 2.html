@@ -68,20 +68,17 @@
     должно моментально отображаться в span. То есть при печати в input'е тег span
     также должен меняться.
     */
-
-
-
     let spanEl = document.querySelector('span');
 
     document.querySelector('input').addEventListener('input', event => {
       spanEl.textContent = event.target.value;
     });
     /*
-            2. При клике на кнопку с классом messageBtn необходимо элементу с классом
-            message:
-            1) добавить два класса: animate__animated и animate__fadeInLeftBig
-            2) поставить данному элементу стиль visibility в значение 'visible'.
-             */
+    2. При клике на кнопку с классом messageBtn необходимо элементу с классом
+     message:
+     1) добавить два класса: animate__animated и animate__fadeInLeftBig
+     2) поставить данному элементу стиль visibility в значение 'visible'.
+     */
     const msgBtnEl = document.querySelector('.messageBtn');
     const messageEl = document.querySelector('.message');
     msgBtnEl.addEventListener('click', () => {
