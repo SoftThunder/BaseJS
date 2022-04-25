@@ -65,8 +65,8 @@
 
     /*
     1. При изменении значения в input с id="from", значение содержащееся в нем
-    должно моментально отображаться в span. То есть при печати в input'е тег span
-    также должен меняться.
+    должно моментально отображаться в span. То есть при печати в input'е тег 
+    span также должен меняться.
     */
     let spanEl = document.querySelector('span');
 
@@ -96,9 +96,28 @@
     Если поле пустое, необходимо данное поле подсветить (поставить класс error
     данному полю).
     Если поле было чем-либо заполнено, подсветку (класс error) необходимо убрать.
-     */
+      */
+ 
+function inspectError(formEls) {
+  formEls.forEach(element => {
+      if (element.value === '') {
+        element.classList.add('error');
+        event.preventDefault();
+      }
+  
+});
+};
+    const formEl = document.querySelector('form');
+    const inputEL = formEl.querySelectorAll('.form-control');
+    formEl.addEventListener('submit', event => {
+    inspectError (inputEL); 
+    });
 
-
+    formEl.addEventListener('input', event => {
+    if (event.target.value === '') {
+      event.target.classList.remove('error');
+    } 
+    });
   </script>
 </body>
 
